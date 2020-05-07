@@ -1,0 +1,50 @@
+﻿CREATE DATABASE IF NOT EXISTS `wof` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci; 
+
+USE `wof`; 
+
+DROP TABLE IF EXISTS `accounts`;CREATE TABLE `accounts` ( 
+
+  `id` int NOT NULL AUTO_INCREMENT, 
+
+  `username` varchar(50) NOT NULL, 
+
+  `password` varchar(255) NOT NULL, 
+
+  `email` varchar(100) NOT NULL, 
+
+  PRIMARY KEY (`id`) 
+
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8; 
+
+USE `wof`; 
+
+DROP TABLE IF EXISTS `history`; 
+
+CREATE TABLE `history` ( 
+
+  `userid` int NOT NULL, 
+
+  `histid` int NOT NULL AUTO_INCREMENT, 
+
+  `datetime` datetime NOT NULL, 
+
+  `query` varchar(150) NOT NULL, 
+
+  PRIMARY KEY (`histid`) 
+
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8; 
+
+USE `wof`; 
+LOCK TABLES `accounts` WRITE; 
+
+INSERT INTO `accounts` VALUES (1,'test','test','test@test.com'),(2,'Srihitha','abcd','srihithareddy100@gmail.com'),(3,'Aruna','aruna','aruna@gmail.com'); 
+
+UNLOCK TABLES; 
+
+USE `wof`;  
+
+LOCK TABLES `history` WRITE; 
+
+INSERT INTO `history` VALUES (2,2,'2020-05-01 08:35:00','Akhil Akkineni'),(2,3,'2020-05-01 08:39:56','Samantha'),(2,4,'2020-05-01 09:51:25','Samantha Akkineni'),(3,5,'2020-05-01 11:49:07','Prabhas'),(1,6,'2020-05-01 15:04:43','Leonardo DiCaprio'),(1,7,'2020-05-01 15:22:47','Akhil Akkineni'),(1,8,'2020-05-01 15:25:38','Akhil Akkineni'); 
+
+UNLOCK TABLES; 

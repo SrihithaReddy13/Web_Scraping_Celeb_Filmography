@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+
+{% block title %}Filmography Wall{% endblock %}
+
+{% block content %}
+<div class="container">
+	<form action="" method="post" >
+		<div class="form-group">
+		      <label for="name"></label>
+			<input type="text" class="form-control" id="name" name="name" placeholder="What is your favourite star's name?">
+		</div>
+		<button type="submit" class="btn btn-success">Go!</button>
+	</form>
+</div>
+
+<div  id="results">
+{% if search %}
+	<div class="results container">
+		{% if list[0] %}
+		<div class="title">
+			<div class="img text-center">
+				<img src="{{ url_for('static', filename= list[1] + '.jpg' ) }}" alt="Star's_img" />
+			</div>
+				<h3 style="padding-top:15px;" align="center"><strong>{{list[0]}}'s Filmography</strong></h3>
+		</div>
+		{% endif %}
+	    <div class="row">
+	        <div class="col-md-6">
+				{% if list[3] %}
+					<h4 align="center"><strong>TV SHOWS</strong></h4>
+					{% for i in list[3] %}
+				        <p align="center">{{i}}</p>
+				    {% endfor %}
+				{% else %}
+					<h4 align="center"><strong>TV SHOWS</strong></h4>
+					<p align="center"><i>~NONE~</i></p>
+				{% endif %}
+	        </div>
+	        <div class="col-md-6">
+				{% if list[2] %}
+		            <h4 align="center"><strong>MOVIES</strong></h4>
+					{% for i in list[2] %}
+			        	<p align="center">{{i}}</p>
+			    	{% endfor %}
+			    {% else %}
+					<h4 align="center"><strong>MOVIES</strong></h4>
+					<p align="center"><i>~NONE~</i></p>
+				{% endif %}
+	        </div>
+			<p style="padding-left:30px;" class="tip"><i><strong>Tip~ </strong> If the results don't match, please check your spellings or try your star's full name and pseudo-names!</i></p>
+	    </div>
+	</div>
+{% endif %}
+</div>
+{% endblock %}
